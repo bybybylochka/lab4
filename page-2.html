@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <title>Лабораторная работа №4</title>
+        <link rel="stylesheet" href="style-1.css">
+    </head>
+    <body>
+        <header class="header">
+            <div class="wrapper header__wrapper">
+                <div class="header__logo">
+                    <img src="resource/logo.png" class="logo">
+                </div>
+                <div class="header__title">
+                    <h1 class="title">Туристическое агенство</h1>
+                </div>
+                <div>
+                    <img src="resource/logo_dop.png" class="logo-dop">
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__wrapper">
+                <article class="main__survey">
+                    <div class="main__result-table">
+                        <table id="result-table">
+                            <tr>
+                                <th>Имя</th>
+                                <th>Телефон</th>
+                                <th>Удовлетворенность обслуживанием</th>
+                                <th>Цвет</th>
+                                <th>Оценка</th>
+                                <th>Отзыв</th>
+                            </tr>
+                            <script>
+                                var i=1;
+                                for(items in localStorage){
+                                    const json=localStorage.getItem('form'+i++);
+                                    const obj=JSON.parse(json);
+                                    var markup = `<tr>`
+                                    for(key in obj){
+                                        if(key=='rad1'){
+                                            markup = markup + `<td>Да</td>`;
+                                        }
+                                        else if(key=='rad2'){
+                                            markup = markup + `<td>Нет</td>`;
+                                        }
+                                        else{
+                                            markup = markup + `<td>${obj[key]}</td>`;
+                                        }
+                                       
+                                    }
+                                    document.getElementById('result-table').innerHTML+=markup;
+                                    document.getElementById('result-table').innerHTML+= `</tr>`
+                                }
+                            </script>
+                        </table>
+                    </div>
+                    <div class="main__result-list">
+                        <select id="list">
+                        <script>
+                            var i = 1
+                            for(items in localStorage) {
+                                    const json=localStorage.getItem('form'+i++);
+                                    const obj=JSON.parse(json);
+                                    document.getElementById('list').innerHTML+=`<option>${obj['name']}</option>`;
+                                        
+                            }
+                        </script>
+                        </select>
+                    </div>
+                </article>
+                <nav class="main__navigation">
+                    <ul class="navigation">
+                        <li class="navigation__li">
+                            <a href="page-1.html" class="navigation__link">Главная</a>
+                        </li>
+                        <li class="navigation__li">
+                            <a href="page-2.html" class="navigation__link">Результаты</a>
+                        </li>
+                    </ul>
+                </nav>
+                <aside class="main__ads">
+                    <img src="resource/aside.png" class="ads">
+                    <img src="resource/aside-1.png" class="ads">
+                    <img src="resource/aside-2.png" class="ads">
+                    <img src="resource/aside.png" class="ads">
+                    <img src="resource/aside-1.png" class="ads">
+                    
+                </aside>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__wrapper">
+                <div class="footer__logo">
+                    <img src="resource/footer.png" class="footer__img">
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>

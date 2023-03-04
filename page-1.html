@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+        <title>Лабораторная работа №4</title>
+        <link rel="stylesheet" href="style-1.css">
+        
+    </head>
+    <body>
+        <header class="header">
+            <div class="wrapper header__wrapper">
+                <div class="header__logo">
+                    <img src="resource/logo.png" class="logo">
+                </div>
+                <div class="header__title">
+                    <h1 class="title">Туристическое агенство</h1>
+                </div>
+                <div>
+                    <img src="resource/logo_dop.png" class="logo-dop">
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <div class="main__wrapper">
+                <article class="main__survey">
+                    <h2 class="main__title">Уважаемые клиенты!</h2>
+                    <p class="main__text">Туристическое агенство "YOUR TRAVEL" проводит анкетирование, с целью оценки качества предоставляемых услуг и выявления недостатков в деятельности фирмы. Мы стремимся совершенствовать нашу работу, обслуживание наших клиентов и поэтому Ваше мнение очень важно для нас.</p>
+                    <form id="myform">
+                        <input type="hidden">
+                        <p>Введите Ваше имя:</p>
+                        <input type="text" class="text-input name" id="name" placeholder="Name" name="name" required>
+                        <p>Введите Ваш номер телефона:</p>
+                        <input type="tel" maxlength="18" id="tel" pattern="\+375\(?(29|33|44|25])\)?[1-9][0-9]{2}\-?[0-9]{2}\-?[0-9]{2}\-?" class="text-input tel" placeholder="Phone number" name="tel" required >
+                        <p>Отметьте наиболее важные для Вас характеристики тура:<br>
+                            <label><input type="checkbox" class="check" id="check1">Условия проживания<br></label>
+                            <label><input type="checkbox" class="check" id="check2">Питание туристов<br></label>
+                            <label><input type="checkbox" class="check" id="check3">Экскурсионное обслуживание<br></label>
+                            <label><input type="checkbox" class="check" id="check4">Дополнительные услуги<br> </label>
+                            <label><input type="checkbox" class="check" id="check5">Обеспечение транспортом<br></label>
+                            <label><input type="checkbox" class="check" id="check6">Услуги гида-переводчика<br></label>
+                        </p>
+                        <p>Соответствовала ли оказанная Вам услуга заявленному:<br>
+                        <input type="radio" class="radio" name="rad1" checked>Да<br>
+                        <input type="radio" class="radio" name="rad2" >Нет<br>
+                        </p>
+                        <p>С каким цветом у вас ассоциируется наше агенство:</p>
+                        <input type="color" class="color" name="colo" required>
+                        <p>Оцените обслуживание по 5-ти бальной шкале:</p>
+                        <input type="number" class="text-input mark" placeholder="5" id="mark"required name="mark" max="5" min="0">
+                        <p>Оставьте Ваши замечания и предложения:</p>
+                        <textarea class="text-input feedback" placeholder="Feedback"id="feedback" required name="feedback" maxlength="200"></textarea><br>
+                        <button type="submit" class="button" id="but_submit">Отправить</button>
+                        <button  type="reset" class="button">Сбросить</button>
+                    </form>
+                    <script>
+                        var count=localStorage.length;
+                        function get_num(){
+                            count++;
+                            return count;
+                        }
+                        
+                        const form=document.querySelector('form');
+
+                        form.addEventListener('submit', (e)=>{
+                            
+                            e.preventDefault();
+
+                            const form_data=new FormData(form);
+                            const obj=Object.fromEntries(form_data);
+                            const json=JSON.stringify(obj);
+                            localStorage.setItem('form'+get_num(), json);     
+                            
+                            alert("Форма отправлена!");
+
+                        })
+                    </script>
+                </article>
+                <nav class="main__navigation">
+                    <ul class="navigation">
+                        <li class="navigation__li">
+                            <a href="page-1.html" class="navigation__link">Главная</a>
+                        </li>
+                        <li class="navigation__li">
+                            <a href="page-2.html" class="navigation__link">Результаты</a>
+                        </li>
+                    </ul>
+                </nav>
+                <aside class="main__ads">
+                    <img src="resource/aside.png" class="ads">
+                    <img src="resource/aside-1.png" class="ads">
+                    <img src="resource/aside-2.png" class="ads">
+                    <img src="resource/aside.png" class="ads">
+                    <img src="resource/aside-1.png" class="ads">
+                    <img src="resource/aside-2.png" class="ads">
+                    <img src="resource/aside-2.png" class="ads">
+                </aside>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__wrapper">
+                <div class="footer__logo">
+                    <img src="resource/footer.png" class="footer__img">
+                </div>
+                <div>
+
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
